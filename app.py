@@ -1,5 +1,7 @@
 import math
 import Iterations.BinaryGap
+import Arrays.CyclicRotation
+import Arrays.OddOccurrencesInArray
 
 
 def solution(N):
@@ -145,3 +147,4 @@ if __name__ == '__main__':
     # print(divisor(24))
     print(MinPerimeterRectangle(36))
     print(Iterations.BinaryGap.binary_gap(55))
+    print(Arrays.CyclicRotation.cyclic_rotation([3, 8, 9, 7, 6], 3))

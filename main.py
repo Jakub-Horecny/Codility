@@ -3,10 +3,6 @@ import math
 import sys
 
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
 def fibonacci(n: int) -> int:
     """
     fibonacci sequence
@@ -27,75 +23,7 @@ def fibonacci(n: int) -> int:
         return seq2 + seq1
 
 
-def binary_gap(n: int) -> int:
-    """
-    BinaryGap is a problem that involves finding the longest sequence of zeros
-    in a binary representation of an integer
-    :param n: integer
-    :return: max distance between ones
-    """
-    sequence: str = bin(n)[2:]
-    print(sequence)
-    max_distance: int = 0
-    temp_distance: int = 0
-    s1: bool = False
 
-    for i in sequence:
-        if i == '1':
-            s1 = True
-            if temp_distance > max_distance:
-                max_distance = temp_distance
-            temp_distance = 0
-        else:
-            if s1:
-                temp_distance += 1
-
-    return max_distance
-
-
-# array
-def cyclic_rotation(A: list, K: int) -> list:
-    """
-    Rotation of the array means that each element is shifted right by one index,
-    and the last element of the array is moved to the first place.
-    :param A: list
-    :param K: rotation
-    :rtype: list
-    :return: rotated list
-    """
-    if len(A) == 0:
-        return []
-    elif K == len(A) or K == 0:
-        return A
-    else:
-        temp_list: list = A
-        K = K % len(A)
-        for i in range(K):
-            temp_list = [temp_list[len(temp_list) - 1]] + temp_list[:len(A) - 1]
-        return temp_list
-
-
-def odd_occurrences_in_array(A: list) -> int:
-    """
-    we are given an array with N elements, N is always odd
-    all the elements of the array except for one has a total even number of occurrences
-    we need to write code that returns the one unpaired value
-    :param A:
-    :return:
-    """
-    A = sorted(A)
-    if A[0] != A[1]:
-        return A[0]
-    for i in range(1, len(A) - 2):
-        if A[i] != A[i + 1]:
-            if A[i + 1] != A[i + 2]:
-                return A[i + 1]
-
-    return A[len(A) - 1]
-    # s = set()
-    # for i in A:
-    #     s.add(i) if i not in s else s.remove(i)
-    # return list(s)[0]
 
 
 # Time Complexity
