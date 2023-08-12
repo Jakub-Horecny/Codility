@@ -24,101 +24,26 @@ def fibonacci(n: int) -> int:
 
 
 
-
-
-# Time Complexity
-def per_missing_element(n: list) -> int:
-    """
-    An array A consisting of N different integers is given.
-    The array contains integers in the range [1..(N + 1)], which means that exactly one element is missing.
-    :param n: list
-    """
-    n = sorted(n)
-    first = n[0]
-    for i in n[1:]:
-        if first + 1 != i:
-            return first + 1
-        first = i
-
-
-def frog_jmp(x: int, y: int, d: int) -> int:
-    """
-    The frog is currently located at position X and wants to get to a position greater than or equal to Y.
-    The small frog always jumps a fixed distance, D.
-    Count the minimal number of jumps that the small frog must perform to reach its target.
-    :param x: start position
-    :param y: min target
-    :param d: one jump distance
-    :return: number of jumps
-    """
-    return math.ceil((y - x) / d)
-
-
-def tape_equilibrium(A: list) -> int:
-    """
-    https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/
-    :param A: list
-    :param p: split index
-    :return:
-    """
-    min_diff: int = sys.maxsize
-    for i in range(1, len(A)):
-        temp_diff = abs(sum(A[:i]) - sum(A[i:]))
-        if temp_diff < min_diff:
-            min_diff = temp_diff
-
-    return min_diff
-
-
-# Counting Elements
-def frog_river_one(a: list, x: int) -> int:
-    steps = set()
-    for i, e in enumerate(a):
-        steps.add(e)
-        if len(steps) == x:
-            return i
-    return -1
-
-
-def max_counters(a: list, n: int) -> list:
+def max_counters(A: list, N: int) -> list:
     """
     count number of unique integers in list, if integer > n - > all counters are set to the maximum value of any counter.
-    :param a:
-    :param n:
+    :param A:
+    :param N:
     :return:
     """
-    counters: list = [0] * n
-    for item in a:
-        if item > n:
-            temp_max = max(counters)
-            counters = [temp_max] * n
+    counters: list = [0] * N
+    max_value = 0
+    for item in A:
+        if item > N:
+            counters = [max_value] * N
         else:
             counters[item - 1] = counters[item - 1] + 1
+            max_value = max(counters[item - 1], max_value)
+
     return counters
 
 
-def missing_integer(a: list) -> int:
-    a = sorted(set(a))
-    if a[len(a) - 1] < 1:
-        return 1
-    else:
-        temp = a[0]
-        for i in a[1:]:
-            if i > 1:
-                if temp + 1 != i:
-                    return temp + 1
-            temp = i
-        return a[len(a) - 1] - 1
 
-
-def perm_check(a: list) -> int:
-    a = sorted(a)
-    temp = a[0]
-    for i in a[1:]:
-        if temp + 1 != i:
-            return 0
-        temp = i
-    return 1
 
 
 # prefix sums
@@ -250,8 +175,7 @@ if __name__ == '__main__':
     # print(frog_river_one([1, 3, 1, 4, 2, 3, 5, 4], 5))
     # print(max_counters([3, 4, 4, 6, 1, 4, 4, 5, 6], 5))
 
-    # print(missing_integer([-5, 0, 1, 3, 6, 4, 1, 2]))
-    # print(missing_integer([1, 2, 3]))
+    #print(missing_integer([-5, 0, 1, 3, 6, 4, 1, 2]))
     # print(missing_integer([2]))
     # print(perm_check([1,2]))
     # print(passing_cars([0, 1, 0, 1, 1]))
@@ -261,4 +185,5 @@ if __name__ == '__main__':
     # print(Brackets('([)()]'))
     # print(Brackets('))(('))
     # print(MinAbsSum([1, 5, 2, -2]))
-    print(nesting('(()()()(()(((()())'))
+    # print(nesting('(()()()(()(((()())'))
+    print(max_counters([3, 4, 4, 6, 1, 4, 4, 5, 6], 5))

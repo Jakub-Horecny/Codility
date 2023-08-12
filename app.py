@@ -3,6 +3,9 @@ import Iterations.BinaryGap
 import Arrays.CyclicRotation
 import Arrays.OddOccurrencesInArray
 
+import TimeComplexity.PermMissingElem
+import CountingElements.PermCheck
+
 
 def solution(N):
     alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -145,6 +148,9 @@ if __name__ == '__main__':
     # print(dominos([[1,2],[4,5],[9,6],[2,3],[5,8]]))
 
     # print(divisor(24))
-    print(MinPerimeterRectangle(36))
-    print(Iterations.BinaryGap.binary_gap(55))
-    print(Arrays.CyclicRotation.cyclic_rotation([3, 8, 9, 7, 6], 3))
+    # print(MinPerimeterRectangle(36))
+    # print(Iterations.BinaryGap.binary_gap(55))
+    # print(Arrays.CyclicRotation.cyclic_rotation([3, 8, 9, 7, 6], 3))
+    # print(Arrays.OddOccurrencesInArray.odd_occurrences_in_array([9, 3, 9, 3, 9, 7, 9]))
+    # print(TimeComplexity.PermMissingElem.per_missing_element([1, 3]))
+    print(CountingElements.PermCheck.perm_check([1,50]))

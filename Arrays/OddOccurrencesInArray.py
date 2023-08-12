@@ -1,3 +1,14 @@
+"""
+This problem can be solved efficiently using bitwise XOR. XOR has a property that if you XOR a number with
+itself, the result will be 0. So, if you XOR all the numbers in the array together, the even paired occurrences
+will cancel each other out, leaving only the unpaired number.
+
+This code iterates through the array and XORs all the elements together. Since XORing the same number twice
+results in 0, the paired numbers will cancel out, and only the unpaired number will remain.
+"""
+
+
+# 100 %
 def odd_occurrences_in_array(A: list) -> int:
     """
     A non-empty array A consisting of N integers is given. The array contains an odd number of elements,
@@ -18,7 +29,8 @@ def odd_occurrences_in_array(A: list) -> int:
 
         def solution(A)
 
-    that, given an array A consisting of N integers fulfilling the above conditions, returns the value of the unpaired element.
+    that, given an array A consisting of N integers fulfilling the above conditions, returns the value of the unpaired
+    element.
 
     For example, given array A such that:
 
@@ -29,23 +41,14 @@ def odd_occurrences_in_array(A: list) -> int:
 
     Write an efficient algorithm for the following assumptions:
 
-    N is an odd integer within the range [1..1,000,000];
-    each element of array A is an integer within the range [1..1,000,000,000];
-    all but one of the values in A occur an even number of times.
+        N is an odd integer within the range [1..1,000,000];
+        each element of array A is an integer within the range [1..1,000,000,000];
+        all but one of the values in A occur an even number of times.
 
     :param A:
     :return:
     """
-    A = sorted(A)
-    if A[0] != A[1]:
-        return A[0]
-    for i in range(1, len(A) - 2):
-        if A[i] != A[i + 1]:
-            if A[i + 1] != A[i + 2]:
-                return A[i + 1]
-
-    return A[len(A) - 1]
-    # s = set()
-    # for i in A:
-    #     s.add(i) if i not in s else s.remove(i)
-    # return list(s)[0]
+    result = 0
+    for num in A:
+        result ^= num
+    return result
